@@ -87,14 +87,16 @@ const update_digit = (event: Event) => {
     </label>
 
     <!-- Digit selector -->
-    <div class="digit-select">
+    <div
+      class="digit-select"
+      v-pop:bottom="
+        ns.t_info(
+          `Vyber číslici na pozici - ${digit_index}`,
+          `Select digit on position - ${digit_index}`
+        )
+      "
+    >
       <select
-        v-pop:bottom="
-          ns.t_info(
-            `Vyber číslici na pozici - ${digit_index}`,
-            `Select digit on position - ${digit_index}`
-          )
-        "
         :id="digit_index + '-digit'"
         @change="update_digit"
         :value="selected_number"
