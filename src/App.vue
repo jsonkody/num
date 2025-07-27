@@ -125,10 +125,10 @@ document.addEventListener("keypress", (e) => {
 <template>
   <a
     target="_blank"
-    v-pop="'Github'"
+    v-pop="'GitHub'"
     href="https://github.com/jsonkody/num"
     class="github-icon"
-    aria-label="link to this project on Github"
+    aria-label="link to this project on GitHub"
   >
     <svg
       height="38"
