@@ -35,8 +35,8 @@ const update_digit = (event: Event) => {
         v-if="ns.show_digits_val"
         v-pop:top="
           ns.t_info(
-            'Hodnota řádu - kliknutím přepneš na index řádu.',
-            'Digit value - click to switch to the place index.'
+            'Hodnota řádu - kliknutím přepneš na index řádu',
+            'Digit value - click to switch to the place index'
           )
         "
         class="digit-value"
@@ -48,8 +48,8 @@ const update_digit = (event: Event) => {
         v-else
         v-pop:top="
           ns.t_info(
-            'Index řádu - kliknutím přepneš na hodnotu řádu.',
-            'Place index - click to switch to the digit value.'
+            'Index řádu - kliknutím přepneš na hodnotu řádu',
+            'Place index - click to switch to the digit value'
           )
         "
         class="digit-index"
@@ -65,10 +65,10 @@ const update_digit = (event: Event) => {
         ns.t_info(
           `( ${
             parseInt(selected_number, ns.base_purple) * position_value
-          } )  Kliknutím přepneš mezi Min - Max.`,
+          } )  Kliknutím přepneš mezi Min - Max`,
           `( ${
             parseInt(selected_number, ns.base_purple) * position_value
-          } )  Click to toggle Min - Max.`,
+          } )  Click to toggle Min - Max`,
           digit_value.toString(),
           digit_value.toString()
         )

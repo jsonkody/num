@@ -197,6 +197,13 @@ export const use_number_system = defineStore("numberSystem", () => {
       base_purple.value
     )
   );
+  const digits_to_decimal_str_num = computed(() =>
+    str_number_converter(
+      digits.value.join(""),
+      base_purple.value,
+      10
+    )
+  );
 
   const switch_green_purple = () => {
     const digits_length = digits.value.length;
@@ -302,6 +309,7 @@ export const use_number_system = defineStore("numberSystem", () => {
     available_chars_for_base,
     digits_to_purple_str_num,
     digits_to_green_str_num,
+    digits_to_decimal_str_num,
     show_digits_val,
     toggle_digits_val,
     set_digits_to_zero,
