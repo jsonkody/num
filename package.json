@@ -10,7 +10,7 @@
     "psh": "git add -A && git commit -m \"saved & pushed by pnpm\" && git push"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.2",
+    "@floating-ui/dom": "^1.7.3",
     "lodash-es": "^4.17.21",
     "pinia": "^3.0.3",
     "toolpop": "^0.3.1",
@@ -19,7 +19,7 @@
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",
     "@types/lodash-es": "^4.17.12",
-    "@vitejs/plugin-vue": "^6.0.0",
+    "@vitejs/plugin-vue": "^6.0.1",
     "autoprefixer": "^10.4.21",
     "tailwindcss": "^4.1.11",
     "terser": "^5.43.1",
