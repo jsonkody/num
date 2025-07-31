@@ -211,7 +211,7 @@ const base_plus_disabled = computed(
     <!-- Controls -->
     <div class="gap-1 center">
       <button
-        v-pop="
+        v-pop:bottom="
           numsys.t_info(
             'Nastaví všechny číslice na nulu',
             'Set all digits to zero'
@@ -223,7 +223,7 @@ const base_plus_disabled = computed(
         Min
       </button>
       <button
-        v-pop="
+        v-pop:bottom="
           numsys.t_info(
             'Přepíná mezi zobrazením hodnot řádů a indexů řádů',
             'Toggle between displaying positional values and place indices'
@@ -240,7 +240,7 @@ const base_plus_disabled = computed(
         }}
       </button>
       <button
-        v-pop="
+        v-pop:bottom="
           numsys.t_info(
             'Nastaví všechny číslice na maximální hodnotu',
             'Set all digits to their maximum value'

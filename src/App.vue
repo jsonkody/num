@@ -263,7 +263,7 @@ function cz_sklonovani(soustava: string) {
         class="footer-link cursor-pointer"
         target="_blank"
         href="https://jsonkody.cz"
-        v-pop="'JsonKody 🤌🧐🍷'"
+        v-pop:bottom="'JsonKody 🤌🧐🍷'"
       >
         JsonKody
       </a>
