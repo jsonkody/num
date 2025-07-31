@@ -325,11 +325,11 @@ function cz_sklonovani(soustava: string) {
 
 .switch-down-enter-from {
   opacity: 0;
-  transform: translateY(30px);
+  transform: translateY(45px);
 }
 .switch-down-leave-to {
   opacity: 0;
-  transform: translateY(90px);
+  transform: translateY(70px);
 }
 
 /**
@@ -342,11 +342,11 @@ function cz_sklonovani(soustava: string) {
 
 .switch-up-enter-from {
   opacity: 0;
-  transform: translateY(-30);
+  transform: translateY(-45);
 }
 .switch-up-leave-to {
   opacity: 0;
-  transform: translateY(-90px);
+  transform: translateY(-70px);
 }
 
 /**
