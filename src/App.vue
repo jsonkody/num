@@ -320,16 +320,16 @@ function cz_sklonovani(soustava: string) {
   */
 .switch-down-enter-active,
 .switch-down-leave-active {
-  transition: all 0.12s ease-in-out;
+  transition: all 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .switch-down-enter-from {
   opacity: 0;
-  transform: translateY(40px);
+  transform: translateY(30px);
 }
 .switch-down-leave-to {
   opacity: 0;
-  transform: translateY(80px);
+  transform: translateY(90px);
 }
 
 /**
@@ -337,16 +337,16 @@ function cz_sklonovani(soustava: string) {
   */
 .switch-up-enter-active,
 .switch-up-leave-active {
-  transition: all 0.12s ease-in-out;
+  transition: all 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
 .switch-up-enter-from {
   opacity: 0;
-  transform: translateY(-40);
+  transform: translateY(-30);
 }
 .switch-up-leave-to {
   opacity: 0;
-  transform: translateY(-80px);
+  transform: translateY(-90px);
 }
 
 /**
