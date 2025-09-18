@@ -120,6 +120,12 @@ document.addEventListener("keypress", (e) => {
 // const toggleLang = () => {
 //   lang.value = lang.value === "cs" ? "en" : "cs";
 // };
+
+function cz_sklonovani(soustava: string) {
+  const [adj, noun] = soustava.split(" ");
+  if (!noun) return;
+  return `${adj.slice(0, -1)}é ${noun.slice(0, -1)}ě`;
+}
 </script>
 
 <template>
@@ -184,11 +190,11 @@ document.addEventListener("keypress", (e) => {
       @click="ns.switch_green_purple"
       class="header-block"
       v-pop:top="
-        ns.t_info('Kliknutím prohodíš hodnoty.', 'Click to switch values.')
+        ns.t_info('Kliknutím prohodíš soustavy', 'Click to switch systems')
       "
     >
       <!-- title -->
-      <Transition name="switch-v" mode="out-in">
+      <Transition name="switch-down" mode="out-in">
         <div :key="ns.name_green">
           <h1 class="header emerald-grad">
             {{ ns.name_green }}
@@ -205,8 +211,12 @@ document.addEventListener("keypress", (e) => {
             :class="ns.info ? 'cursor-help' : ''"
             v-pop:bottom="
               ns.t_info(
-                `Číslo v - ${ns.name_green.toLocaleLowerCase()}`,
-                `Number in - ${ns.name_green.toLocaleLowerCase()}`
+                `Číslo ${ns.digits_to_decimal_str_num} v ${cz_sklonovani(
+                  ns.name_green.toLocaleLowerCase()
+                )}`,
+                `Number ${
+                  ns.digits_to_decimal_str_num
+                } in ${ns.name_green.toLocaleLowerCase()}`
               )
             "
             >{{ ns.digits_to_green_str_num }}</span
@@ -215,7 +225,7 @@ document.addEventListener("keypress", (e) => {
       </Transition>
 
       <!-- title -->
-      <Transition name="switch-v" mode="out-in">
+      <Transition name="switch-up" mode="out-in">
         <div :key="ns.name_purple">
           <h1 class="header relative purple-grad">
             {{ ns.name_purple }}
@@ -232,8 +242,12 @@ document.addEventListener("keypress", (e) => {
             :class="ns.info ? 'cursor-help' : ''"
             v-pop:bottom="
               ns.t_info(
-                `Číslo v - ${ns.name_purple.toLocaleLowerCase()}`,
-                `Number in - ${ns.name_purple.toLocaleLowerCase()}`
+                `Číslo ${ns.digits_to_decimal_str_num} v ${cz_sklonovani(
+                  ns.name_purple.toLocaleLowerCase()
+                )}`,
+                `Number ${
+                  ns.digits_to_decimal_str_num
+                } in ${ns.name_purple.toLocaleLowerCase()}`
               )
             "
             >{{ ns.digits_to_purple_str_num }}</span
@@ -249,7 +263,7 @@ document.addEventListener("keypress", (e) => {
         class="footer-link cursor-pointer"
         target="_blank"
         href="https://jsonkody.cz"
-        v-pop="'JsonKody 🤌🧐🍷'"
+        v-pop:bottom="'JsonKody 🤌🧐🍷'"
       >
         JsonKody
       </a>
@@ -304,18 +318,35 @@ document.addEventListener("keypress", (e) => {
 /**
   *  Switch vertical animation
   */
-.switch-v-enter-active,
-.switch-v-leave-active {
-  transition: all 0.12s ease-in-out;
+.switch-down-enter-active,
+.switch-down-leave-active {
+  transition: all 0.2s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-.switch-v-enter-from {
+.switch-down-enter-from {
   opacity: 0;
-  transform: translateY(-20px);
+  transform: translateY(45px);
 }
-.switch-v-leave-to {
+.switch-down-leave-to {
   opacity: 0;
-  transform: translateY(20px);
+  transform: translateY(70px);
+}
+
+/**
+  *  Switch vertical animation
+  */
+.switch-up-enter-active,
+.switch-up-leave-active {
+  transition: all 0.2s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+.switch-up-enter-from {
+  opacity: 0;
+  transform: translateY(-45);
+}
+.switch-up-leave-to {
+  opacity: 0;
+  transform: translateY(-70px);
 }
 
 /**

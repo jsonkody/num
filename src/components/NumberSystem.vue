@@ -21,10 +21,10 @@ const set_base = (event: Event) => {
 
 const base_title = computed(() =>
   numsys.t_info(
-    `[ ${numsys.base_purple} ]  je základ v této soustavy.
-Je to tedy ${numsys.name_purple.toLowerCase()}.`,
-    `[ ${numsys.base_purple} ]  is the base in this number system.
-So it's called ${numsys.name_purple.toLowerCase()}.`
+    `[ ${numsys.base_purple} ]  je základ v této soustavy
+- je to tedy ${numsys.name_purple.toLowerCase()}`,
+    `[ ${numsys.base_purple} ]  is the base in this number system
+- so it's called ${numsys.name_purple.toLowerCase()}`
   )
 );
 
@@ -55,8 +55,8 @@ const base_plus_disabled = computed(
           <button
             v-pop:right="
               numsys.t_info(
-                'Zamknuto - počet číslic se nebude automaticky snižovat.',
-                'Locked - number of digits won\'t automatically decrease.',
+                'Zamknuto - počet číslic se nebude automaticky snižovat',
+                'Locked - number of digits won\'t automatically decrease',
                 'Zamknuto',
                 'Locked'
               )
@@ -70,8 +70,8 @@ const base_plus_disabled = computed(
           <button
             v-pop:right="
               numsys.t_info(
-                'Odemknuto - počet číslic bude vždy minimum nutné k vyjádření čísla.',
-                'Unlocked - number of digits will always be the minimum necessary to represent the number.',
+                'Odemknuto - počet číslic bude vždy minimum nutné k vyjádření čísla',
+                'Unlocked - number of digits will always be the minimum necessary to represent the number',
                 'Odemknuto',
                 'Unlocked'
               )
@@ -121,8 +121,8 @@ const base_plus_disabled = computed(
       <div
         v-pop="
           numsys.t_info(
-            'Toto je indikátor uložení.',
-            'This is the save indicator.',
+            'Toto je indikátor uložení',
+            'This is the save indicator',
             'Uloženo',
             'Saved'
           )
@@ -177,8 +177,8 @@ const base_plus_disabled = computed(
           v-pop:left="
             base_plus_disabled
               ? numsys.t_info(
-                  `[ ${numsys.MAX_BASE} ]  je nejvyšší povolený základ.`,
-                  `[ ${numsys.MAX_BASE} ]  is the highest allowed base.`
+                  `[ ${numsys.MAX_BASE} ]  je nejvyšší povolený základ`,
+                  `[ ${numsys.MAX_BASE} ]  is the highest allowed base`
                 )
               : numsys.t_info('Základ + 1', 'Base + 1')
           "
@@ -193,8 +193,8 @@ const base_plus_disabled = computed(
           v-pop:left="
             base_minus_disabled
               ? numsys.t_info(
-                  `[ ${numsys.MIN_BASE} ]  je nejmenší povolený základ.`,
-                  `[ ${numsys.MIN_BASE} ]  is the lowest allowed base.`
+                  `[ ${numsys.MIN_BASE} ]  je nejmenší povolený základ`,
+                  `[ ${numsys.MIN_BASE} ]  is the lowest allowed base`
                 )
               : numsys.t_info('Základ - 1', 'Base - 1')
           "
@@ -211,10 +211,10 @@ const base_plus_disabled = computed(
     <!-- Controls -->
     <div class="gap-1 center">
       <button
-        v-pop="
+        v-pop:bottom="
           numsys.t_info(
-            'Nastaví všechny číslice na nulu.',
-            'Set all digits to zero.'
+            'Nastaví všechny číslice na nulu',
+            'Set all digits to zero'
           )
         "
         @click="numsys.set_digits_to_zero"
@@ -223,10 +223,10 @@ const base_plus_disabled = computed(
         Min
       </button>
       <button
-        v-pop="
+        v-pop:bottom="
           numsys.t_info(
-            'Přepíná mezi zobrazením hodnot řádů a indexů řádů.',
-            'Toggle between displaying positional values and place indices.'
+            'Přepíná mezi zobrazením hodnot řádů a indexů řádů',
+            'Toggle between displaying positional values and place indices'
           )
         "
         @click="numsys.toggle_digits_val"
@@ -240,10 +240,10 @@ const base_plus_disabled = computed(
         }}
       </button>
       <button
-        v-pop="
+        v-pop:bottom="
           numsys.t_info(
-            'Nastaví všechny číslice na maximální hodnotu.',
-            'Set all digits to their maximum value.'
+            'Nastaví všechny číslice na maximální hodnotu',
+            'Set all digits to their maximum value'
           )
         "
         @click="numsys.set_digits_to_max"
