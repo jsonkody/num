@@ -282,3 +282,23 @@ fb-off:hover {
   background-image: url("./components/icons/cs.svg");
   background-position: left;
 }
+
+@utility shortcut-row {
+  @apply flex items-center justify-between gap-3;
+}
+
+@utility shortcut-label {
+  @apply text-xs text-white;
+}
+
+@utility shortcut-section-title {
+  @apply asap uppercase tracking-wider text-gray-400 mb-2;
+}
+
+@utility shortcut-key-green {
+  @apply px-2 py-0.5 bg-gray-800 rounded border border-gray-700 font-mono font-extrabold text-xs text-emerald-300;
+}
+
+@utility shortcut-key-purple {
+  @apply px-2 py-0.5 bg-gray-800 rounded border border-gray-700 font-mono font-extrabold text-xs text-purple-300;
+}

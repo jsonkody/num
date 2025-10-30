@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@floating-ui/dom": "^1.7.4",
+    "@tabler/icons-vue": "^3.35.0",
     "lodash-es": "^4.17.21",
     "pinia": "^3.0.3",
     "toolpop": "^0.4.5",

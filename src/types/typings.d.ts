@@ -43,4 +43,6 @@ interface Name {
   en: string;
 }
 
-export type { Base, Lang, Name };
+type ModalPlacement = "bottom" | "center" | "top" | "fullscreen";
+
+export type { Base, Lang, Name, ModalPlacement };

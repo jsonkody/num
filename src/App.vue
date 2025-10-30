@@ -2,9 +2,13 @@
 import NumberSystem from "./components/NumberSystem.vue";
 import Info from "./components/icons/Info.vue";
 import InfoOff from "./components/icons/InfoOff.vue";
+import Keyboard from "./components/icons/Keyboard.vue";
+import ModalComponent from "./components/ModalComponent.vue";
 import { use_number_system } from "./stores/numberSystem";
+import { ref } from "vue";
 
 const ns = use_number_system();
+const info_modal = ref(false);
 
 const digits_keys: Record<string, number> = {
   Digit0: 0,
@@ -23,6 +27,7 @@ document.addEventListener("keypress", (e) => {
   if (
     [
       "KeyI",
+      "KeyO",
       "KeyJ",
       "KeyK",
       "KeyL",
@@ -35,6 +40,7 @@ document.addEventListener("keypress", (e) => {
       "Minus",
       "Equal",
       "Backspace",
+      "Escape",
     ].includes(e.code)
   ) {
     e.preventDefault();
@@ -42,6 +48,10 @@ document.addEventListener("keypress", (e) => {
 
   if (e.code === "KeyI") {
     ns.info = !ns.info;
+  }
+
+  if (e.code === "KeyO") {
+    info_modal.value = !info_modal.value;
   }
 
   if (e.code === "KeyL" || e.code === "KeyJ") {
@@ -84,11 +94,11 @@ document.addEventListener("keypress", (e) => {
     ns.set_digits_to_max();
   }
 
-  if (e.code === "Escape") {
-    e.preventDefault();
-    alert("Reset");
-    ns.reset();
-  }
+  // if (e.code === "Escape") {
+  //   e.preventDefault();
+  //   alert("Reset");
+  //   ns.reset();
+  // }
 
   // Zkontrolujte, zda fokus není na vstupním poli
   const activeElement = document.activeElement;
@@ -271,24 +281,155 @@ function cz_sklonovani(soustava: string) {
   </div>
 
   <!-- Info switch -->
-  <div class="m-3 sm:m-2 absolute bottom-0 left-0">
-    <div
-      v-pop:top="ns.t_info('Vypnout popisky', 'Hide info labels')"
-      @click="ns.info = false"
-      v-if="ns.info"
-      class="app-info"
-    >
-      <Info />
+  <div class="m-3 sm:m-2 flex gap-2 absolute bottom-0 left-0">
+    <div>
+      <div
+        v-pop:top="ns.t_info('Vypnout popisky', 'Hide info labels')"
+        @click="ns.info = false"
+        v-if="ns.info"
+        class="app-info"
+      >
+        <Info />
+      </div>
+      <div
+        v-pop:top="ns.t('Zapnout popisky', 'Show info labels')"
+        @click="ns.info = true"
+        v-else
+        class="app-info"
+      >
+        <InfoOff />
+      </div>
     </div>
     <div
-      v-pop:top="ns.t('Zapnout popisky', 'Show info labels')"
-      @click="ns.info = true"
-      v-else
+      v-pop="ns.t('Zobrazit klávesové zkratky', 'Show shortcuts')"
       class="app-info"
+      @click="info_modal = true"
     >
-      <InfoOff />
+      <Keyboard />
     </div>
   </div>
+
+  <ModalComponent v-model="info_modal" :blur="true">
+    <template #content>
+      <div
+        class="px-3 py-1.5 space-y-3 bg-black/50 border border-white/12 rounded-xl overflow-hidden"
+      >
+        <h2 class="text-lg font-bold text-center">
+          ⌨️
+          <span
+            class="asap text-2xl bg-gradient-to-r from-emerald-400 to-purple-400 bg-clip-text text-transparent"
+          >
+            {{ ns.t("Klávesové zkratky", "Keyboard Shortcuts") }}
+          </span>
+        </h2>
+
+        <div class="space-y-3">
+          <!-- Most used -->
+          <div class="space-y-1.5">
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-green">Space</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Přepnout soustavy", "Switch systems")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-green">I</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Info popisky", "Info labels")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-green">O</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Kláveskové zkratky", "Keyboard Shortcutso")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <div class="flex gap-1.5">
+                <kbd class="shortcut-key-green">L</kbd>
+                <kbd class="shortcut-key-green">J</kbd>
+              </div>
+              <span class="shortcut-label">{{
+                ns.t("Změnit jazyk", "Change language")
+              }}</span>
+            </div>
+          </div>
+
+          <div class="border-t border-white/10 pt-3 space-y-1.5">
+            <h3 class="shortcut-section-title">
+              {{ ns.t("Číselný základ", "Number Base") }}
+            </h3>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">,</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Snížit základ", "Decrease base")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">.</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Zvýšit základ", "Increase base")
+              }}</span>
+            </div>
+          </div>
+
+          <div class="border-t border-white/10 pt-3 space-y-1.5">
+            <h3 class="shortcut-section-title">
+              {{ ns.t("Číslice", "Digits") }}
+            </h3>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">-</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Odebrat číslici", "Remove digit")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">=</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Přidat číslici", "Add digit")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">D</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Přepnout hodnoty", "Toggle values")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">K</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Zamknout číslice", "Lock digits")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">N</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Nastavit na nulu", "Set to zero")
+              }}</span>
+            </div>
+
+            <div class="shortcut-row">
+              <kbd class="shortcut-key-purple">M</kbd>
+              <span class="shortcut-label">{{
+                ns.t("Nastavit na maximum", "Set to maximum")
+              }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </template>
+  </ModalComponent>
+
   <div
     class="trans m-3.5 center gap-2 absolute bottom-0 right-0 sm:opacity-40 sm:hover:opacity-80"
   >
