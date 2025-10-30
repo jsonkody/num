@@ -325,7 +325,7 @@ function cz_sklonovani(soustava: string) {
 
         <div class="space-y-3">
           <!-- Most used -->
-          <div class="space-y-1.5">
+          <div class="">
             <div class="shortcut-row">
               <kbd class="shortcut-key-green">Space</kbd>
               <span class="shortcut-label">{{
@@ -358,7 +358,7 @@ function cz_sklonovani(soustava: string) {
             </div>
           </div>
 
-          <div class="border-t border-white/10 pt-3 space-y-1.5">
+          <div class="border-t border-white/10 pt-3 ">
             <h3 class="shortcut-section-title">
               {{ ns.t("Číselný základ", "Number Base") }}
             </h3>
@@ -378,7 +378,7 @@ function cz_sklonovani(soustava: string) {
             </div>
           </div>
 
-          <div class="border-t border-white/10 pt-3 space-y-1.5">
+          <div class="pb-1 border-t border-white/10 pt-3 ">
             <h3 class="shortcut-section-title">
               {{ ns.t("Číslice", "Digits") }}
             </h3>
