@@ -302,7 +302,7 @@ function cz_sklonovani(soustava: string) {
     </div>
     <div
       v-pop="ns.t('Zobrazit klávesové zkratky', 'Show shortcuts')"
-      class="app-info"
+      class="hidden sm:block app-info"
       @click="info_modal = true"
     >
       <Keyboard />
