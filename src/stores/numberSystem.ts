@@ -68,12 +68,12 @@ export const use_number_system = defineStore("numberSystem", () => {
   const name_green = computed(() =>
     lang.value === "cs"
       ? generateCzechName(base_green.value)
-      : generateEnglishName(base_green.value)
+      : generateEnglishName(base_green.value),
   );
   const name_purple = computed(() =>
     lang.value === "cs"
       ? generateCzechName(base_purple.value)
-      : generateEnglishName(base_purple.value)
+      : generateEnglishName(base_purple.value),
   );
   const en_name = computed(() => generateEnglishName(base_purple.value));
 
@@ -87,7 +87,7 @@ export const use_number_system = defineStore("numberSystem", () => {
     const new_digits_array = digits_converter(
       digits.value,
       base_purple.value,
-      val
+      val,
     );
     digits.value = [];
     base_purple.value = val;
@@ -133,7 +133,7 @@ export const use_number_system = defineStore("numberSystem", () => {
   };
 
   const toggle_digit_min_max = (index: number) => {
-    const digit_index = digits.value.length - index - 1
+    const digit_index = digits.value.length - index - 1;
     if (!digits.value[digit_index]) {
       return;
     }
@@ -149,7 +149,9 @@ export const use_number_system = defineStore("numberSystem", () => {
   };
 
   const remove_digit = () => {
-    digits.value.shift();
+    if (digits.value.length > 1) {
+      digits.value.shift();
+    }
   };
 
   function stringToBigInt(str: string, base: Base): BigInt {
@@ -175,7 +177,7 @@ export const use_number_system = defineStore("numberSystem", () => {
   function str_number_converter(
     str_num: string,
     base_from: Base,
-    base_to: Base
+    base_to: Base,
   ) {
     str_num = stringToBigInt(str_num, base_from)
       .toString(base_to)
@@ -187,22 +189,18 @@ export const use_number_system = defineStore("numberSystem", () => {
     str_number_converter(
       digits.value.join(""),
       base_purple.value,
-      base_green.value
-    )
+      base_green.value,
+    ),
   );
   const digits_to_purple_str_num = computed(() =>
     str_number_converter(
       digits.value.join(""),
       base_purple.value,
-      base_purple.value
-    )
+      base_purple.value,
+    ),
   );
   const digits_to_decimal_str_num = computed(() =>
-    str_number_converter(
-      digits.value.join(""),
-      base_purple.value,
-      10
-    )
+    str_number_converter(digits.value.join(""), base_purple.value, 10),
   );
 
   const switch_green_purple = () => {
@@ -228,12 +226,12 @@ export const use_number_system = defineStore("numberSystem", () => {
     cs: string,
     en: string,
     title_cs: string = "",
-    title_en: string = ""
+    title_en: string = "",
   ) => {
     if (!info.value) {
-      return () => lang.value === "cs" ? title_cs : title_en;
+      return () => (lang.value === "cs" ? title_cs : title_en);
     }
-    return () => lang.value === "cs" ? cs : en;
+    return () => (lang.value === "cs" ? cs : en);
   };
   const toggle_lang = () => {
     lang.value = lang.value === "cs" ? "en" : "cs";
@@ -253,39 +251,38 @@ export const use_number_system = defineStore("numberSystem", () => {
     () => digits.value,
     () => {
       enqueue_ls_set("digits", digits.value.join(delimiter));
-    }
+    },
   );
   watch(
     () => digits.value.length,
     () => {
       enqueue_ls_set("digits", digits.value.join(delimiter));
-    }
+    },
   );
   watch(
     () => show_digits_val.value,
-    () => enqueue_ls_set("show_digits_val", show_digits_val.value.toString())
+    () => enqueue_ls_set("show_digits_val", show_digits_val.value.toString()),
   );
   watch(
     () => lock_digits.value,
-    () => enqueue_ls_set("lock_digits", lock_digits.value.toString())
+    () => enqueue_ls_set("lock_digits", lock_digits.value.toString()),
   );
   watch(
     () => base_green.value,
-    () => enqueue_ls_set("base_green", base_green.value.toString())
+    () => enqueue_ls_set("base_green", base_green.value.toString()),
   );
   watch(
     () => base_purple.value,
-    () => enqueue_ls_set("base_purple", base_purple.value.toString())
+    () => enqueue_ls_set("base_purple", base_purple.value.toString()),
   );
   watch(
     () => info.value,
-    () => enqueue_ls_set("info", info.value.toString())
+    () => enqueue_ls_set("info", info.value.toString()),
   );
 
-
-  const count = ref(0)
+  const count = ref(0);
   return {
-    count, 
+    count,
     saved,
     t,
     t_info,

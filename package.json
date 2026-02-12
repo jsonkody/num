@@ -10,24 +10,24 @@
     "psh": "git add -A && git commit -m \"saved & pushed by pnpm\" && git push"
   },
   "dependencies": {
-    "@floating-ui/dom": "^1.7.4",
-    "@tabler/icons-vue": "^3.35.0",
-    "lodash-es": "^4.17.21",
-    "pinia": "^3.0.3",
-    "toolpop": "^0.4.5",
-    "vue": "^3.5.22"
+    "@floating-ui/dom": "^1.7.5",
+    "@tabler/icons-vue": "^3.36.1",
+    "lodash-es": "^4.17.23",
+    "pinia": "^3.0.4",
+    "toolpop": "^0.4.6",
+    "vue": "^3.5.28"
   },
   "devDependencies": {
-    "@tailwindcss/vite": "^4.1.14",
+    "@tailwindcss/vite": "^4.1.18",
     "@types/lodash-es": "^4.17.12",
-    "@vitejs/plugin-vue": "^6.0.1",
-    "autoprefixer": "^10.4.21",
-    "tailwindcss": "^4.1.14",
-    "terser": "^5.44.0",
+    "@vitejs/plugin-vue": "^6.0.4",
+    "autoprefixer": "^10.4.24",
+    "tailwindcss": "^4.1.18",
+    "terser": "^5.46.0",
     "typescript": "~5.9.3",
-    "vite": "^7.1.8",
+    "vite": "^7.3.1",
     "vite-plugin-compression": "^0.5.1",
-    "vite-plugin-vue-devtools": "^8.0.2",
-    "vue-tsc": "^3.1.0"
+    "vite-plugin-vue-devtools": "^8.0.6",
+    "vue-tsc": "^3.2.4"
   }
 }
