@@ -222,11 +222,11 @@ function cz_sklonovani(soustava: string) {
             v-pop:bottom="
               ns.t_info(
                 `Číslo ${ns.digits_to_decimal_str_num} v ${cz_sklonovani(
-                  ns.name_green.toLocaleLowerCase()
+                  ns.name_green.toLocaleLowerCase(),
                 )}`,
                 `Number ${
                   ns.digits_to_decimal_str_num
-                } in ${ns.name_green.toLocaleLowerCase()}`
+                } in ${ns.name_green.toLocaleLowerCase()}`,
               )
             "
             >{{ ns.digits_to_green_str_num }}</span
@@ -253,11 +253,11 @@ function cz_sklonovani(soustava: string) {
             v-pop:bottom="
               ns.t_info(
                 `Číslo ${ns.digits_to_decimal_str_num} v ${cz_sklonovani(
-                  ns.name_purple.toLocaleLowerCase()
+                  ns.name_purple.toLocaleLowerCase(),
                 )}`,
                 `Number ${
                   ns.digits_to_decimal_str_num
-                } in ${ns.name_purple.toLocaleLowerCase()}`
+                } in ${ns.name_purple.toLocaleLowerCase()}`,
               )
             "
             >{{ ns.digits_to_purple_str_num }}</span
@@ -358,7 +358,7 @@ function cz_sklonovani(soustava: string) {
             </div>
           </div>
 
-          <div class="border-t border-white/10 pt-3 ">
+          <div class="border-t border-white/10 pt-3">
             <h3 class="shortcut-section-title">
               {{ ns.t("Číselný základ", "Number Base") }}
             </h3>
@@ -378,7 +378,7 @@ function cz_sklonovani(soustava: string) {
             </div>
           </div>
 
-          <div class="pb-1 border-t border-white/10 pt-3 ">
+          <div class="pb-1 border-t border-white/10 pt-3">
             <h3 class="shortcut-section-title">
               {{ ns.t("Číslice", "Digits") }}
             </h3>
