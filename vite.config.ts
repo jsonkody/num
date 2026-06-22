@@ -6,7 +6,10 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), tailwindcss()],
+  plugins: [vue(), vueDevTools({
+   // launchEditor: 'zed',
+   launchEditor: 'code',
+  }), tailwindcss()],
   server: {
     port: 4040,
   },
